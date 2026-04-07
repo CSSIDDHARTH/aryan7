@@ -1,0 +1,11 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leaderboard/{entryId} {
+      // Anyone can read and create entries without authentication
+      allow read, create: if true;
+      
+      // Prevent unauthorized updates or deletions
+      allow update, delete: if false;
+    }
+  }
+}

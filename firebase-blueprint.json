@@ -1,0 +1,30 @@
+{
+  "entities": {
+    "ScoreEntry": {
+      "title": "ScoreEntry",
+      "description": "A single player's score entry for the leaderboard.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the player (plain text input)."
+        },
+        "score": {
+          "type": "number",
+          "description": "The score achieved by the player (max 50)."
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "The timestamp when the score was achieved."
+        }
+      },
+      "required": ["name", "score", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{entryId}": {
+      "schema": "ScoreEntry",
+      "description": "Collection of player scores for the leaderboard, accessed anonymously."
+    }
+  }
+}
